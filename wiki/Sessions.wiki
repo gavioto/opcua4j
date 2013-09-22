@@ -1,0 +1,5 @@
+#summary Describes some Session related topics
+
+= Introduction =
+
+Every request is associated with a session object.
