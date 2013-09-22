@@ -1,0 +1,29 @@
+Open OPC UA Server
+------------------
+
+The Open OPC UA Server should help you developing a domain specific OPC UA server without managing a lot of the OPC UA stuff. You should be able to concentrate on your own business logic.
+
+At the moment their does not exist any open source implementation of an OPC UA server in Java. There is an OPC UA Java stack available from the opcfoundation, but this only abstracts the communication and protocol details. If you want to develop at a higher abstraction level, you have to use some (expansive) SDKs nowadays.
+
+This project is still in beta stage, but implementation is going on. Next steps will be to fix the known issues so that an OPC UA standard complient server can be built.
+
+The project is published under the Creative Commons 3.0 BY-SA (http://creativecommons.org/licenses/by-sa/3.0/) License which is shipped in the LICENSE file. 
+
+Features:
+ * Annotation based nodes
+ * Browsing through address space
+ * Reading nodes 
+
+Issues:
+ * Types of annotated nodes are not propagated to the adress space at the moment
+ * Resuming a client session is not supported for now. 
+
+Dependencies:
+This implementation has dependencies to some Java libraries which are listed here:
+ * Opc.Ua.Stack-1.01.308.2.jar - The OPC UA Java stack available at https://www.opcfoundation.org/
+ * jdom-2.0.4.jar - http://www.jdom.org/
+ * jaxen-1.1.4.jar - http://jaxen.codehaus.org/
+ * log4j-1.2.16.jar - http://logging.apache.org/log4j/1.2/
+ * bcprov-jdk-14-140.jar - http://www.bouncycastle.org
+ 
+you have to add them into the /lib directory to use the existing ant build script. i am checking rights if i am allowed to include them here.

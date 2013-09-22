@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+
+<project name="open-opc-ua-server" default="clean-build" basedir=".">
+    
+    <property name="project.name" value="OpenOpcUaServer" />
+	<property name="version" value="0.9" />
+	<property name="build" value="5" />
+	<property name="src.dir" value="src" />
+	<property name="examples.dir" value="examples" />
+	<property name="test.dir" value="test" />
+	<property name="lib.dir" value="lib" />
+	<property name="res.dir" value="resource" />
+	<property name="legal.dir" value="legal" />
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="tmp" />
+	<property name="sampleclasses.dir" value="tmp_sample" />
+	
+	<!-- names of the releases -->
+	<property name="release.binary" value="${build.dir}/${project.name}-${version}.${build}.jar" />
+	<property name="release.src" value="${build.dir}/${project.name}-${version}.${build}-src.zip" />
+	<property name="release.redist" value="${build.dir}/${project.name} ${version} Redistributables [${build}].zip" />
+	<!-- releases for example server -->
+	<property name="release.sampleserver" value="${build.dir}/sampleserver.jar" />
+	<property name="release.samplepack" value="${build.dir}/${project.name}-${version}.${build}-sampleserver.zip" />
+	
+	<!-- used for upload to google code, available at http://code.google.com/p/ant-googlecode/ -->
+	<property name="gc.upload.jar" value="release-mgmt/ant-googlecode-0.0.3.jar" />
+	<!-- load google code credentials for release task (automatically upload the release to google code)
+		THIS FILE WILL NOT BE COMMITED. -->
+	<property file="gc.credentials.properties" />
+	
+	<target name="clean">
+		<delete dir="${build.dir}" quiet="true" />
+		<delete dir="${classes.dir}" quiet="true" />
+	</target>
+	
+	<path id="project.classpath" >
+         <fileset dir="${lib.dir}">
+             <include name="**/*.jar"/>
+         </fileset>
+    </path>
+     
+	<path id="sample.classpath" >
+	    <path refid="project.classpath" />
+        <pathelement path="${classes.dir}" />
+     </path>
+	
+	<!--  build src files -->
+	<target name="compile" depends="clean">
+		<mkdir dir="${classes.dir}" />
+		<javac 
+			srcdir="${src.dir}" 
+			destdir="${classes.dir}" 
+			classpathref="project.classpath">	
+		</javac>
+	</target>
+	
+	<!--  build sample server -->
+	<target name="compile_sample" depends="compile">
+		<mkdir dir="${sampleclasses.dir}" />
+		<javac 
+			srcdir="${examples.dir}" 
+			destdir="${sampleclasses.dir}" 
+			classpathref="sample.classpath">	
+		</javac>
+	</target>
+	
+	<target name="build" depends="compile, compile_sample">
+		<mkdir dir="${build.dir}" />
+	
+		<jar destfile="${release.binary}" basedir="${classes.dir}">
+		    <!-- include resources -->
+			<fileset dir="${res.dir}" includes="**/*" />
+			
+		    <manifest>
+		      <!-- Who is building this jar? -->
+		      <attribute name="Built-By" value="${user.name}"/>
+		      <attribute name="Implementation-Vendor" value="BPI at Technical University Vienna"/>
+		      <attribute name="Implementation-Title" value="Open OPC UA Server"/>
+		      <attribute name="Implementation-Version" value="${version}.${build}"/>
+		    </manifest>			
+		</jar>
+		
+		<jar destfile="${release.sampleserver}" basedir="${sampleclasses.dir}">
+		    <manifest>
+		      <!-- Who is building this jar? -->
+		      <attribute name="Built-By" value="${user.name}"/>
+		      <attribute name="Implementation-Vendor" value="BPI at Technical University Vienna"/>
+		      <attribute name="Implementation-Title" value="Sample Open OPC UA Server"/>
+		      <attribute name="Implementation-Version" value="${version}.${build}"/>
+		    </manifest>			
+		</jar>
+		
+		<!-- build zip with source files -->
+		<zip destfile="${release.src}" basedir="${src.dir}">
+		    <fileset dir="${res.dir}" includes="**/*" />
+		    <fileset dir="${test.dir}" includes="**/*" />
+		    <fileset dir="${examples.dir}" includes="**/*" />
+		</zip>	
+		
+		<!-- includes dependency libs -->
+		<zip destfile="${release.redist}">
+			<fileset dir="${build.dir}" includes="${project.name}-${version}.${build}.jar" />
+			<fileset dir="${lib.dir}" includes="**/*" />
+			<fileset dir="." includes="${legal.dir}/*" />
+		</zip>
+		
+		<!-- build zip with example server and all libs -->
+		<!-- includes dependency libs -->
+		<zip destfile="${release.samplepack}">
+			<fileset dir="${build.dir}" includes="${project.name}-${version}.${build}.jar" />
+			<fileset dir="${build.dir}" includes="sampleserver.jar" />
+			<fileset dir="${lib.dir}" includes="**/*" />
+			<fileset dir="." includes="${legal.dir}/*" />
+			<fileset dir="." includes="start.sh" />
+		</zip>
+		
+		<delete dir="${classes.dir}" quiet="true" />
+		<delete dir="${sampleclasses.dir}" quiet="true" />
+	</target>
+
+	<target name="release" depends="build">
+	    <taskdef classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask" classpath="${gc.upload.jar}" name="gcupload"/>
+	    <fail unless="gc.username" message="Missing property 'gc.username'."/>
+	    <fail unless="gc.password" message="Missing property 'gc.password'."/>
+	    <gcupload
+            username="${gc.username}"
+            password="${gc.password}"
+         	projectname="${ant.project.name}"
+            filename="${release.binary}"
+      		targetfilename="${release.binary}"
+            summary="Open OPC UA Server v${version}.${build} binary"
+            labels="Featured, OpSys-All" />
+	    
+	    <gcupload
+            username="${gc.username}"
+            password="${gc.password}"
+         	projectname="${ant.project.name}"
+            filename="${release.src}"
+      		targetfilename="${release.src}"
+            summary="Open OPC UA Server v${version}.${build} source, tests and examples"
+            labels="Featured, OpSys-All" />
+	    
+	    <gcupload
+            username="${gc.username}"
+            password="${gc.password}"
+         	projectname="${ant.project.name}"
+            filename="${release.redist}"
+      		targetfilename="${release.redist}"
+            summary="Open OPC UA Server v${version}.${build} binary with dependent libraries"
+            labels="Featured, OpSys-All" />
+	    
+	    <gcupload
+            username="${gc.username}"
+            password="${gc.password}"
+         	projectname="${ant.project.name}"
+            filename="${release.samplepack}"
+      		targetfilename="${release.samplepack}"
+            summary="Sample server using Open OPC UA Server v${version}.${build}. Download and try it :)"
+            labels="Featured, OpSys-All" />
+	</target> 
+	
+	<target name="clean-build" depends="clean,build" />
+</project>

@@ -1,0 +1,66 @@
+The following change-log reflects the changes made to the Compliance Test Tool Test Scripts between release versions.
+
+Version 1.1.0.xxxxxx, Released Aug-0-2011
+ New features added to the CTT:
+  - Settings dialog now contains a Server browser, which automatically stores a copy of the Server Certificate and uses for CTT testing.
+  - Ability to Read and Write to external TEXT files.
+  - SCRIPT OUTPUT widget replaced textbox with list control due to increased resource efficiency removing delays by the control, increasing test reliability.
+  - Async Publish call ability. Scripts yet to use this new feature.
+
+ Bugfixes and/or Improvements: 
+  - Session object optimized to allow the CTT to be more responsive irrespective of state of the session object.
+  - Node Browser in the Settings is now able to connect and display the server address space.
+
+ Script revisions:
+  Server - Few, mostly changes to display messages; some scripts moved to their correct Conformance Units.
+         - A few new scripts added.
+  Client - Few, fixes to typos and incorrect names of methods that were previously renamed.
+
+
+Version 1.1.0.1, Released Mar-28-2011
+ New features added to the CTT:
+  - HELP documentation now provided as HTML pages instead of *.CHM.
+  - HELP widget shows some common questions that hyperlink to the help documentation.
+  - Various parts of the test-tool now link to the Help documentation.
+  - FILE...OPEN dialog now requires you to search for a settings file (Within a Project folder).
+  - FILe...SAVE will save the file any any results to a file called <projectName>.results.xml.
+  
+ MANY Scripts have improved robustness particularly with missing Settings.
+ Some Scripts have modified expectations as noted below.
+
+ - Attribute Service Set
+     5.8.1-025 = Byte[] added to testing. Previous assumption relied on ByteString.
+     5.8.2-009 = Byte and DateTime value fixes.
+     
+ - Discovery Service Set
+     5.5.1-004 = Corrected assignment of "supportedLocales" variable to obtain a string value or an array of strings as applicable.
+     5.5.1-009 = same as 5.5.1-004.
+     5.5.1-010 = same as 5.5.1-004.
+     
+ - Session Service Set
+     5.6.3-Err-001 = Expected incorrect statuscode 'BadSessionClosed' instead of correct code 'BadSessionIdInvalid'.
+     5.6.4-004     = Allows Bad_ServiceNotSupported.
+     
+ - Monitored Items Service Set
+     5.9.1-029 = Permitting Bad_MonitoredItemFilterNotSuported escape clause.
+     5.9.1-060 = Write checks for Bad_WriteNotSupported.
+     5.9.1-061 = Permitting Bad_MonitoredItemFilterNotSuported escape clause.
+     5.9.1-062 = Permitting Bad_MonitoredItemFilterNotSuported escape clause.
+     5.9.1-Err-014 = Changed Bad_FilterNotAllowed to Bad_MonitoredItemFilterUnsupported.
+     5.9.1-Err-016 = Permitting Bad_MonitoredItemFilterNotSuported escape clause.
+     5.9.1-Err-029 = Permitting Bad_MonitoredItemFilterNotSuported escape clause.
+     5.9.4-020     = Permitting Bad_MonitoredItemFilterNotSuported escape clause.
+
+ - Data Access
+     6.2-Err-004 = Permitting Bad_MonitoredItemFilterNotSuported escape clause.
+     6.4-015     = Permitting Bad_MonitoredItemFilterNotSuported escape clause.
+
+ - NEW: Byte array testing now conducted. Previous assumption relied on ByteString. New setting added.
+ - NEW: Time Synchronization Setting: allows enabling/disabling of time checks between CTT and Server.
+ - MOVED: 5.9.2-015 from 'Monitor Basic' to 'Monitor Queue Size 2'.
+ - IMPROVED: Checking of SymbolicId and LocalizedText in DiagnosticInfo objects.
+ - EASED: The number of settings has been reduced. No more Dynamic or Scalar Set nodes required.
+ - EASED: SessionDiagnostics checking. Now supports Bad_NodeIdUnknown.
+ 
+
+Version 1.0, Released Sep-16-2010

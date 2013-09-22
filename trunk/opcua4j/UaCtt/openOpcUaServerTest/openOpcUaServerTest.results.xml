@@ -1,0 +1,17 @@
+<AbstractItemModelData xsi:noNamespaceSchemaLocation="itemmodeldata.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <Headers size="4">
+  <Header section="0">
+   <Value typename="QString" type="10" data="Test Case"/>
+  </Header>
+  <Header section="1">
+   <Value typename="QString" type="10" data="Timestamp"/>
+  </Header>
+  <Header section="2">
+   <Value typename="QString" type="10" data="Message"/>
+  </Header>
+  <Header section="3">
+   <Value typename="QString" type="10" data="StatusCode"/>
+  </Header>
+ </Headers>
+ <Rows size="0"/>
+</AbstractItemModelData>
