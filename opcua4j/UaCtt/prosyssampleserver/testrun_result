@@ -1,0 +1,215 @@
+-- NEW INSTANCE OF BASELOGGER --
+-- NEW INSTANCE OF BASELOGGER --
+-- NEW INSTANCE OF BASELOGGER --
+load clientCertificate returned Good (0x00000000)
+load clientPrivateKey returned Good (0x00000000)
+load serverCertificate returned Good (0x00000000)
+connecting channel to opc.tcp://localhost:52520/OPCUA/SampleConsoleServer
+connecting channel to 
+Connect() [NoSecurity] status BadInvalidArgument (0x80ab0000)
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/connectChannel.js  line: 126
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/identity.js  line: 85
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/identity.js  line: 168
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/ServiceBased/SessionServiceSet/ActivateSession/activateSession.js  line: 62
+                called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/ServiceBased/SessionServiceSet/CreateSession/createSession.js  line: 29
+                    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/connect.js  line: 20
+                        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 36
+disconnecting channel
+Disconnect() status BadInvalidState (0x80af0000)
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/disconnectChannel.js  line: 24
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/identity.js  line: 92
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/identity.js  line: 168
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/ServiceBased/SessionServiceSet/ActivateSession/activateSession.js  line: 62
+                called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/ServiceBased/SessionServiceSet/CreateSession/createSession.js  line: 29
+                    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/connect.js  line: 20
+                        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 36
+connecting channel to opc.tcp://localhost:52520/OPCUA/SampleConsoleServer
+disconnecting channel
+	getUserTokenPolicy( "http://opcfoundation.org/UA/SecurityPolicy#None", "0"; returning: PolicyId: anonymous, TokenType: 0, IssuedTokenType: , IssuerEndpointUrl: , SecurityPolicyUri: )
+ServiceResult was good. Good (0x00000000)
+ResponseHeader.ServiceDiagnostics is empty, and no diagnostics were requested.
+ActivateSession complete, checking the clock times on Server and Client:
+	Current time on server = 2013-03-13T13:04:41.018Z
+	Current time on client = 2013-03-13T13:04:41.030Z
+	Difference between server and client time = -12ms. Slight differences (+/- 20ms) can be expected here due to the timing of making the call.
+ServiceResult was good. Good (0x00000000)
+ResponseHeader.ServiceDiagnostics is empty, and no diagnostics were requested.
+Timestamp received (indicates a delay of 66 ms) is within our tolerance range of 1000ms.
+Detecting server support for Diagnostics...
+Reading '1' items.
+	[0] NodeId: 'i=2294'; Attribute: 'Value'; IndexRange: ''
+ResponseHeader.ServiceDiagnostics is empty, and no diagnostics were requested.
+Timestamp received (indicates a delay of 9 ms) is within our tolerance range of 1000ms.
+Checking element[0] NodeId = i=2294, AttributeId = Value (13) (Setting: '')
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Scalar/Bool'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Scalar/ByteString'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Scalar/Guid'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Scalar/XmlElement'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/Bool'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/Byte'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/ByteString'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/DateTime'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/Double'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/Float'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/Guid'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/Int16'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/Int32'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/Int64'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/SByte'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/String'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/UInt16'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/UInt32'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/UInt64'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+Setting not configured: '/Server Test/NodeIds/Static/All Profiles/Arrays/XmlElement'.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/warnOnce.js  line: 105
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 305
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/Base/Objects/monitoredItem.js  line: 325
+            called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 42
+	MonitoredItem.fromSettings returning '12' monitored item objects.
+Reading '12' items.
+	[0] NodeId: 'ns=4;s=ByteAnalogItem'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Byte')
+	[1] NodeId: 'ns=4;s=DateTimeDataItem'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/DateTime')
+	[2] NodeId: 'ns=4;s=DoubleAnalogItem'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Double')
+	[3] NodeId: 'ns=4;s=FloatAnalogItem'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Float')
+	[4] NodeId: 'ns=4;s=DateTimeDataItem_Definition'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/String')
+	[5] NodeId: 'ns=4;s=Int16AnalogItem'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Int16')
+	[6] NodeId: 'ns=4;s=UInt16AnalogItem'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/UInt16')
+	[7] NodeId: 'ns=4;s=Int32AnalogItem'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Int32')
+	[8] NodeId: 'ns=4;s=UInt32AnalogItem'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/UInt32')
+	[9] NodeId: 'ns=4;s=UInt64AnalogItem'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/UInt64')
+	[10] NodeId: 'ns=4;s=SByteAnalogItem'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/SByte')
+	[11] NodeId: 'ns=4;s=Int64AnalogItem'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Int64')
+ResponseHeader.ServiceDiagnostics is empty, and no diagnostics were requested.
+Timestamp received (indicates a delay of -7 ms) is within our tolerance range of 1000ms.
+Checking element[0] NodeId = ns=4;s=ByteAnalogItem, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Byte')
+Checking element[1] NodeId = ns=4;s=DateTimeDataItem, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/DateTime')
+Checking element[2] NodeId = ns=4;s=DoubleAnalogItem, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Double')
+Checking element[3] NodeId = ns=4;s=FloatAnalogItem, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Float')
+Checking element[4] NodeId = ns=4;s=DateTimeDataItem_Definition, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/String')
+Results[4]  (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/String') SourceTimestamp not set. Requested timestamps: Both. Received value: 2009-04-22T19:24:48.000Z
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/ServiceBased/AttributeServiceSet/Read/check_read_valid.js  line: 87
+    called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/library/ServiceBased/AttributeServiceSet/Read/read.js  line: 101
+        called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 50
+Checking element[5] NodeId = ns=4;s=Int16AnalogItem, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Int16')
+Checking element[6] NodeId = ns=4;s=UInt16AnalogItem, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/UInt16')
+Checking element[7] NodeId = ns=4;s=Int32AnalogItem, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Int32')
+Checking element[8] NodeId = ns=4;s=UInt32AnalogItem, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/UInt32')
+Checking element[9] NodeId = ns=4;s=UInt64AnalogItem, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/UInt64')
+Checking element[10] NodeId = ns=4;s=SByteAnalogItem, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/SByte')
+Checking element[11] NodeId = ns=4;s=Int64AnalogItem, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Int64')
+Could not read the initial values of the Scalar nodes we want to test.
+called from: /home/harald/sources/offener_opc/OpenOpcUaServer/UaCtt/prosyssampleserver/maintree/Attribute Services/Attribute Read/Test Cases/initialize.js  line: 52
+
+
+
+***** CONFORMANCE UNIT 'Attribute Read' TEST SCRIPTS STARTING ******
+
+
+
+~~~ Invoking test script: read581001 ~~~
+
+	MonitoredItem.fromSettings returning '12' monitored item objects.
+Reading '1' items.
+	[0] NodeId: 'ns=4;s=ByteAnalogItem'; Attribute: 'Value'; IndexRange: '' (setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Byte')
+ResponseHeader.ServiceDiagnostics is empty, and no diagnostics were requested.
+Timestamp received (indicates a delay of -11 ms) is within our tolerance range of 1000ms.
+Checking element[0] NodeId = ns=4;s=ByteAnalogItem, AttributeId = Value (13) (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Byte')
+Read Results:
+	NodeId: ns=4;s=ByteAnalogItem; (Setting: '/Server Test/NodeIds/Static/All Profiles/Scalar/Byte') ; Value: '0'; Quality: Good (0x00000000); Time Server: 2013-03-13T13:04:41.097Z
+------------------------ Test Case Metrics -------------------
+	Started at: 2013-03-13T13:04:41.094Z
+	Ended at: 2013-03-13T13:04:41.104Z
+	Duration: 10 msecs
+--------------------------------------------------------------
+
+
+
+***** CONFORMANCE UNIT 'Attribute Read' TEST SCRIPTS COMPLETE ******
+
+ServiceResult was good. Good (0x00000000)
+ResponseHeader.ServiceDiagnostics is empty, and no diagnostics were requested.
+Timestamp received (indicates a delay of -11 ms) is within our tolerance range of 1000ms.
+disconnecting channel
+Disconnected channel.
+
+
+
+***** CONFORMANCE UNIT 'Attribute Read' TESTING COMPLETE ******
+
+

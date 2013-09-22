@@ -1,0 +1,133 @@
+opc.tcp://127.0.0.1:62541/Quickstarts/ReferenceServer
+ns=2;s=/Static/All Profiles/Scalar/Double
+ns=2;s=/Static/All Profiles/Scalar/Boolean
+ns=2;s=/Static/All Profiles/Scalar/Byte
+ns=2;s=/Static/All Profiles/Scalar/DateTime
+ns=2;s=/Static/All Profiles/Scalar/Float
+ns=2;s=/Static/All Profiles/Scalar/Guid
+ns=2;s=/Static/All Profiles/Scalar/Int16
+ns=2;s=/Static/All Profiles/Scalar/Int32
+ns=2;s=/Static/All Profiles/Scalar/Int64
+ns=2;s=/Static/All Profiles/Scalar/String
+ns=2;s=/Static/All Profiles/Scalar/SByte
+ns=2;s=/Static/All Profiles/Scalar/UInt16
+ns=2;s=/Static/All Profiles/Scalar/UInt32
+ns=2;s=/Static/All Profiles/Scalar/UInt64
+ns=2;s=/Static/All Profiles/Scalar/XmlElement
+ns=2;s=/Static/All Profiles/Arrays/DateTime
+ns=2;s=/Static/All Profiles/Arrays/Double
+ns=2;s=/Static/All Profiles/Arrays/Float
+ns=2;s=/Static/All Profiles/Arrays/Guid
+ns=2;s=/Static/All Profiles/Arrays/Int16
+ns=2;s=/Static/All Profiles/Arrays/Int32
+ns=2;s=/Static/All Profiles/Arrays/Int64
+ns=2;s=/Static/All Profiles/Arrays/String
+ns=2;s=/Static/All Profiles/Arrays/UInt16
+ns=2;s=/Static/All Profiles/Arrays/UInt32
+ns=2;s=/Static/All Profiles/Arrays/UInt64
+ns=2;s=/Static/All Profiles/Arrays/XmlElement
+ns=2;s=/Static/DA Profile/DataItem/Byte
+ns=2;s=/Static/DA Profile/DataItem/Double
+ns=2;s=/Static/DA Profile/DataItem/Float
+ns=2;s=/Static/DA Profile/DataItem/Int16
+ns=2;s=/Static/DA Profile/DataItem/UInt16
+ns=2;s=/Static/DA Profile/DataItem/Int32
+ns=2;s=/Static/DA Profile/DataItem/UInt32
+ns=2;s=/Static/DA Profile/DataItem/Int64
+ns=2;s=/Static/DA Profile/DataItem/UInt64
+ns=2;s=/Static/DA Profile/DataItem/SByte
+ns=2;s=/Static/DA Profile/DataItem/String
+ns=2;s=/Static/DA Profile/DataItem/DateTime
+ns=2;s=/Static/DA Profile/AnalogType/Double
+ns=2;s=/Static/DA Profile/AnalogType/Float
+ns=2;s=/Static/DA Profile/AnalogType/Int16
+ns=2;s=/Static/DA Profile/AnalogType/UInt16
+ns=2;s=/Static/DA Profile/AnalogType/Int32
+ns=2;s=/Static/DA Profile/AnalogType/UInt32
+ns=2;s=/Static/DA Profile/AnalogType/Int64
+ns=2;s=/Static/DA Profile/AnalogType/UInt64
+ns=2;s=/Static/DA Profile/AnalogType/Byte
+ns=2;s=/Static/DA Profile/AnalogType/SByte
+ns=2;s=/Static/DA Profile/AnalogType/Double
+ns=2;s=/Static/DA Profile/DiscreteType/MultiState1
+ns=2;s=/Static/DA Profile/DiscreteType/MultiState2
+ns=2;s=/Static/DA Profile/DiscreteType/MultiState3
+ns=2;s=/Static/DA Profile/DiscreteType/MultiState4
+ns=2;s=/Static/DA Profile/DiscreteType/MultiState5
+ns=2;s=/Static/DA Profile/DiscreteType/TwoState1
+ns=2;s=/Static/DA Profile/DiscreteType/TwoState2
+ns=2;s=/Static/DA Profile/DiscreteType/TwoState3
+ns=2;s=/Static/DA Profile/DiscreteType/TwoState4
+ns=2;s=/Static/DA Profile/DiscreteType/TwoState5
+ns=2;s=/Static/DA Profile/AnalogType Arrays/Int16
+ns=2;s=/Static/DA Profile/AnalogType Arrays/UInt32
+ns=2;s=/Static/DA Profile/AnalogType Arrays/Int32
+ns=2;s=/Static/DA Profile/AnalogType Arrays/UInt32
+ns=2;s=/Static/DA Profile/AnalogType Arrays/Float
+ns=2;s=/Static/DA Profile/AnalogType Arrays/Double
+ns=2;s=/Static/All Profiles/Scalar/Double
+ns=2;s=/Static/All Profiles/Scalar/Boolean
+ns=2;s=/Static/All Profiles/Scalar/Byte
+ns=2;s=/Static/All Profiles/Scalar/DateTime
+ns=2;s=/Static/All Profiles/Scalar/Float
+ns=2;s=/Static/All Profiles/Scalar/Guid
+ns=2;s=/Static/All Profiles/Scalar/Int16
+ns=2;s=/Static/All Profiles/Scalar/Int32
+ns=2;s=/Static/All Profiles/Scalar/Int64
+ns=2;s=/Static/All Profiles/Scalar/String
+ns=2;s=/Static/All Profiles/Scalar/SByte
+ns=2;s=/Static/All Profiles/Scalar/UInt16
+ns=2;s=/Static/All Profiles/Scalar/UInt32
+ns=2;s=/Static/All Profiles/Scalar/UInt64
+ns=2;s=/Static/All Profiles/Scalar/XmlElement
+ns=2;s=/Static/All Profiles/Arrays/DateTime
+ns=2;s=/Static/All Profiles/Arrays/Double
+ns=2;s=/Static/All Profiles/Arrays/Float
+ns=2;s=/Static/All Profiles/Arrays/Guid
+ns=2;s=/Static/All Profiles/Arrays/Int16
+ns=2;s=/Static/All Profiles/Arrays/Int32
+ns=2;s=/Static/All Profiles/Arrays/Int64
+ns=2;s=/Static/All Profiles/Arrays/String
+ns=2;s=/Static/All Profiles/Arrays/UInt16
+ns=2;s=/Static/All Profiles/Arrays/UInt32
+ns=2;s=/Static/All Profiles/Arrays/UInt64
+ns=2;s=/Static/All Profiles/Arrays/XmlElement
+ns=2;s=/Static/DA Profile/DataItem/Byte
+ns=2;s=/Static/DA Profile/DataItem/Double
+ns=2;s=/Static/DA Profile/DataItem/Float
+ns=2;s=/Static/DA Profile/DataItem/Int16
+ns=2;s=/Static/DA Profile/DataItem/UInt16
+ns=2;s=/Static/DA Profile/DataItem/Int32
+ns=2;s=/Static/DA Profile/DataItem/UInt32
+ns=2;s=/Static/DA Profile/DataItem/Int64
+ns=2;s=/Static/DA Profile/DataItem/UInt64
+ns=2;s=/Static/DA Profile/DataItem/SByte
+ns=2;s=/Static/DA Profile/DataItem/String
+ns=2;s=/Static/DA Profile/DataItem/DateTime
+ns=2;s=/Static/DA Profile/AnalogType/Double
+ns=2;s=/Static/DA Profile/AnalogType/Float
+ns=2;s=/Static/DA Profile/AnalogType/Int16
+ns=2;s=/Static/DA Profile/AnalogType/UInt16
+ns=2;s=/Static/DA Profile/AnalogType/Int32
+ns=2;s=/Static/DA Profile/AnalogType/UInt32
+ns=2;s=/Static/DA Profile/AnalogType/Int64
+ns=2;s=/Static/DA Profile/AnalogType/UInt64
+ns=2;s=/Static/DA Profile/AnalogType/Byte
+ns=2;s=/Static/DA Profile/AnalogType/SByte
+ns=2;s=/Static/DA Profile/AnalogType/Double
+ns=2;s=/Static/DA Profile/DiscreteType/MultiState1
+ns=2;s=/Static/DA Profile/DiscreteType/MultiState2
+ns=2;s=/Static/DA Profile/DiscreteType/MultiState3
+ns=2;s=/Static/DA Profile/DiscreteType/MultiState4
+ns=2;s=/Static/DA Profile/DiscreteType/MultiState5
+ns=2;s=/Static/DA Profile/DiscreteType/TwoState1
+ns=2;s=/Static/DA Profile/DiscreteType/TwoState2
+ns=2;s=/Static/DA Profile/DiscreteType/TwoState3
+ns=2;s=/Static/DA Profile/DiscreteType/TwoState4
+ns=2;s=/Static/DA Profile/DiscreteType/TwoState5
+ns=2;s=/Static/DA Profile/AnalogType Arrays/Int16
+ns=2;s=/Static/DA Profile/AnalogType Arrays/UInt32
+ns=2;s=/Static/DA Profile/AnalogType Arrays/Int32
+ns=2;s=/Static/DA Profile/AnalogType Arrays/UInt32
+ns=2;s=/Static/DA Profile/AnalogType Arrays/Float
+ns=2;s=/Static/DA Profile/AnalogType Arrays/Double
