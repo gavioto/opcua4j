@@ -262,9 +262,13 @@ public class BrowseServiceHandler extends ServiceHandlerBase implements NodeMana
 			EndpointServiceRequest<RegisterNodesRequest, RegisterNodesResponse> serviceReq)
 			throws ServiceFaultException {
 		
+		LOG.info("called onRegisterNodes");
+		
 		initRequestContext(serviceReq);
 		RegisterNodesRequest req = serviceReq.getRequest();
 		RegisterNodesResponse resp = new RegisterNodesResponse();
+		
+		LOG.info("request: " + req.toString());
 		
 		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
 		sendResp(serviceReq, resp);

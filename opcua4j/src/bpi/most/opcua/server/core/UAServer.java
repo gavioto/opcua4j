@@ -28,7 +28,9 @@ import bpi.most.opcua.server.core.adressspace.INodeManager;
 import bpi.most.opcua.server.core.auth.IUserPasswordAuthenticator;
 import bpi.most.opcua.server.handler.AttributeServiceHandler;
 import bpi.most.opcua.server.handler.BrowseServiceHandler;
+import bpi.most.opcua.server.handler.MonitoredItemServiceHandler;
 import bpi.most.opcua.server.handler.SessionServiceHandler;
+import bpi.most.opcua.server.handler.SubscriptionServiceHandler;
 import bpi.most.opcua.server.handler.TestServiceHandler;
 
 /**
@@ -164,6 +166,8 @@ public class UAServer {
 		bindSessionService(); // allways used for session management
 		bindBrowseService(); // browsing the adress space
 		bindAttributeService(); // reading/writing (history) data
+		bindSubscriptionService(); // subscribing for monitored items
+		bindMonitoredItemsService(); //to monitor items
 
 		String endPointUrl = endpoint.getEndpointUrl();
 
@@ -201,10 +205,12 @@ public class UAServer {
 	}
 
 	private void bindTestService() {
+		LOG.info("binding test-service");
 		stackServer.addServiceHandler(new TestServiceHandler());
 	}
 
 	private void bindSessionService() {
+		LOG.info("binding session-service");
 		SessionServiceHandler sessionHandler = new SessionServiceHandler();
 		sessionHandler.init(this);
 
@@ -212,13 +218,29 @@ public class UAServer {
 	}
 
 	private void bindAttributeService() {
+		LOG.info("binding attribute-service");
 		AttributeServiceHandler serviceHandler = new AttributeServiceHandler();
 		serviceHandler.init(this);
 		stackServer.addServiceHandler(serviceHandler);
 	}
 
 	private void bindBrowseService() {
+		LOG.info("binding browse-service");
 		BrowseServiceHandler serviceHandler = new BrowseServiceHandler();
+		serviceHandler.init(this);
+		stackServer.addServiceHandler(serviceHandler);
+	}
+	
+	private void bindSubscriptionService(){
+		LOG.info("binding subscription-service");
+		SubscriptionServiceHandler serviceHandler = new SubscriptionServiceHandler();
+		serviceHandler.init(this);
+		stackServer.addServiceHandler(serviceHandler);
+	}
+	
+	private void bindMonitoredItemsService(){
+		LOG.info("binding monitored-items-service");
+		MonitoredItemServiceHandler serviceHandler = new MonitoredItemServiceHandler();
 		serviceHandler.init(this);
 		stackServer.addServiceHandler(serviceHandler);
 	}
