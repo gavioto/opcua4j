@@ -18,6 +18,7 @@ import bpi.most.opcua.server.core.Session;
 import bpi.most.opcua.server.core.SessionManager;
 import bpi.most.opcua.server.core.UAServer;
 import bpi.most.opcua.server.core.adressspace.AddressSpace;
+import bpi.most.opcua.server.core.subscription.SubscriptionManager;
 
 public class ServiceHandlerBase {
 
@@ -116,5 +117,9 @@ public class ServiceHandlerBase {
 
 	protected AddressSpace getAddressSpace() {
 		return server.getAddrSpace();
+	}
+	
+	protected SubscriptionManager getSubscriptionManager(){
+		return server.getSubscriptionManager();
 	}
 }

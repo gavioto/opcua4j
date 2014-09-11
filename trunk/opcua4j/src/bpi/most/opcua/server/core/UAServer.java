@@ -26,6 +26,7 @@ import bpi.most.opcua.server.core.adressspace.AddrSpaceBuilder;
 import bpi.most.opcua.server.core.adressspace.AddressSpace;
 import bpi.most.opcua.server.core.adressspace.INodeManager;
 import bpi.most.opcua.server.core.auth.IUserPasswordAuthenticator;
+import bpi.most.opcua.server.core.subscription.SubscriptionManager;
 import bpi.most.opcua.server.handler.AttributeServiceHandler;
 import bpi.most.opcua.server.handler.BrowseServiceHandler;
 import bpi.most.opcua.server.handler.MonitoredItemServiceHandler;
@@ -60,6 +61,11 @@ public class UAServer {
 	 * Each Server has exactly one SessionManager.
 	 */
 	protected SessionManager sessionManager;
+	
+	/**
+	 * handles subscriptions and monitored items for this server
+	 */
+	protected SubscriptionManager subscriptionManager;
 
 	/**
 	 * underlying {@link Server} from the UA-Stack
@@ -96,6 +102,7 @@ public class UAServer {
 	public UAServer() {
 		stackServer = new Server();
 		sessionManager = new SessionManager();
+		subscriptionManager = new SubscriptionManager();
 		nsTable = NamespaceTable.DEFAULT;
 		customNodeManagers = new ArrayList<INodeManager>();
 
@@ -198,6 +205,9 @@ public class UAServer {
 		} catch (ServiceResultException e) {
 			LOG.error(e.getMessage(), e);
 		}
+		
+		
+		
 	}
 
 	public void addNodeManager(INodeManager nodeManager) {
@@ -407,5 +417,19 @@ public class UAServer {
 	 */
 	public boolean supportsUserTokenPolicy(String policyId) {
 		return supportedUserTokenPolicies.containsKey(policyId);
+	}
+
+	/**
+	 * @return the subscriptionManager
+	 */
+	public SubscriptionManager getSubscriptionManager() {
+		return subscriptionManager;
+	}
+
+	/**
+	 * @param subscriptionManager the subscriptionManager to set
+	 */
+	public void setSubscriptionManager(SubscriptionManager subscriptionManager) {
+		this.subscriptionManager = subscriptionManager;
 	}
 }

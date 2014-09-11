@@ -278,7 +278,7 @@ public class SessionServiceHandler extends ServiceHandlerBase implements Session
 		NodeId authToken = NodeId.randomGUID(1);
 		session.setAuthenticationToken(authToken);
 
-		server.getSessionManager().addSession(session);
+		sessionMgr.addSession(session);
 		// / LOG.debug("created session for client: " + session);
 
 		resp.setSessionId(sessionID);

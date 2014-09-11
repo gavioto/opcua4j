@@ -38,9 +38,14 @@ public class MonitoredItemServiceHandler extends ServiceHandlerBase implements M
 
 	@Override
 	public void onModifyMonitoredItems(EndpointServiceRequest<ModifyMonitoredItemsRequest, ModifyMonitoredItemsResponse> serviceReq) throws ServiceFaultException {
+		
+		LOG.info("onModifyMonitoredItems");
+		
 		initRequestContext(serviceReq);
 		ModifyMonitoredItemsRequest req = serviceReq.getRequest();
 		ModifyMonitoredItemsResponse resp = new ModifyMonitoredItemsResponse();
+		
+		LOG.info("request: " + req.toString());
 		
 		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
 		sendResp(serviceReq, resp);
@@ -48,9 +53,13 @@ public class MonitoredItemServiceHandler extends ServiceHandlerBase implements M
 
 	@Override
 	public void onSetMonitoringMode(EndpointServiceRequest<SetMonitoringModeRequest, SetMonitoringModeResponse> serviceReq) throws ServiceFaultException {
+		LOG.info("onSetMonitoringMode");
+		
 		initRequestContext(serviceReq);
 		SetMonitoringModeRequest req = serviceReq.getRequest();
 		SetMonitoringModeResponse resp = new SetMonitoringModeResponse();
+		
+		LOG.info("request: " + req.toString());
 		
 		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
 		sendResp(serviceReq, resp);
@@ -58,9 +67,13 @@ public class MonitoredItemServiceHandler extends ServiceHandlerBase implements M
 
 	@Override
 	public void onSetTriggering(EndpointServiceRequest<SetTriggeringRequest, SetTriggeringResponse> serviceReq) throws ServiceFaultException {
+		LOG.info("onSetTriggering");
+		
 		initRequestContext(serviceReq);
 		SetTriggeringRequest req = serviceReq.getRequest();
 		SetTriggeringResponse resp = new SetTriggeringResponse();
+		
+		LOG.info("request: " + req.toString());
 		
 		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
 		sendResp(serviceReq, resp);
@@ -68,9 +81,13 @@ public class MonitoredItemServiceHandler extends ServiceHandlerBase implements M
 
 	@Override
 	public void onDeleteMonitoredItems(EndpointServiceRequest<DeleteMonitoredItemsRequest, DeleteMonitoredItemsResponse> serviceReq) throws ServiceFaultException {
+		LOG.info("onDeleteMonitoredItems");
+		
 		initRequestContext(serviceReq);
 		DeleteMonitoredItemsRequest req = serviceReq.getRequest();
 		DeleteMonitoredItemsResponse resp = new DeleteMonitoredItemsResponse();
+		
+		LOG.info("request: " + req.toString());
 		
 		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
 		sendResp(serviceReq, resp);

@@ -1,6 +1,7 @@
 package bpi.most.opcua.server.handler;
 
 import org.apache.log4j.Logger;
+import org.opcfoundation.ua.builtintypes.StatusCode;
 import org.opcfoundation.ua.builtintypes.UnsignedInteger;
 import org.opcfoundation.ua.common.ServiceFaultException;
 import org.opcfoundation.ua.core.CreateSubscriptionRequest;
@@ -21,12 +22,9 @@ import org.opcfoundation.ua.core.TransferSubscriptionsRequest;
 import org.opcfoundation.ua.core.TransferSubscriptionsResponse;
 import org.opcfoundation.ua.transport.EndpointServiceRequest;
 
-public class SubscriptionServiceHandler extends ServiceHandlerBase implements SubscriptionServiceSetHandler {
+import bpi.most.opcua.server.core.subscription.Subscription;
 
-	/**
-	 * counts up to generate unique subscription IDs
-	 */
-	private static long subscriptionIndex = 0;
+public class SubscriptionServiceHandler extends ServiceHandlerBase implements SubscriptionServiceSetHandler {
 	
 	private static final Logger LOG = Logger
 			.getLogger(SubscriptionServiceHandler.class);
@@ -41,14 +39,16 @@ public class SubscriptionServiceHandler extends ServiceHandlerBase implements Su
 		CreateSubscriptionResponse resp = new CreateSubscriptionResponse();
 		
 		LOG.info("request: " + req.toString());
-		
 		resp.setResponseHeader(buildRespHeader(req));
 		
-		resp.setSubscriptionId(new UnsignedInteger(subscriptionIndex++));
-		resp.setRevisedLifetimeCount(req.getRequestedLifetimeCount());
-		resp.setRevisedMaxKeepAliveCount(req.getRequestedMaxKeepAliveCount());
-		resp.setRevisedPublishingInterval(req.getRequestedPublishingInterval());
+		Subscription subscription = getSubscriptionManager().createSubscription(req);
 		
+		resp.setSubscriptionId(new UnsignedInteger(subscription.getId()));
+		resp.setRevisedLifetimeCount(new UnsignedInteger(subscription.getLifetimeCount()));
+		resp.setRevisedMaxKeepAliveCount(new UnsignedInteger(subscription.getMaxKeepAliveCount()));
+		resp.setRevisedPublishingInterval(subscription.getPublishingInterval());
+		
+		resp.setResponseHeader(buildRespHeader(req));
 		sendResp(serviceReq, resp);
 	}
 
@@ -68,7 +68,9 @@ public class SubscriptionServiceHandler extends ServiceHandlerBase implements Su
 		SetPublishingModeRequest req = serviceReq.getRequest();
 		SetPublishingModeResponse resp = new SetPublishingModeResponse();
 		
-		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
+		getSubscriptionManager().setPublishingMode(req);
+		
+		resp.setResponseHeader(buildRespHeader(req));
 		sendResp(serviceReq, resp);
 	}
 
@@ -108,7 +110,9 @@ public class SubscriptionServiceHandler extends ServiceHandlerBase implements Su
 		DeleteSubscriptionsRequest req = serviceReq.getRequest();
 		DeleteSubscriptionsResponse resp = new DeleteSubscriptionsResponse();
 		
-		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
+		getSubscriptionManager().deleteSubscription(req);
+		
+		resp.setResponseHeader(buildRespHeader(req));
 		sendResp(serviceReq, resp);
 	}
 
