@@ -1,5 +1,8 @@
 package bpi.most.opcua.server.core.subscription;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Subscription {
 
@@ -52,11 +55,15 @@ zero.
 	 */
 	private int priority;
 	
+	private Map<Integer, MonitoredItem> monitoredItems;
+	
+	
 	/**
 	 * @param id
 	 */
 	public Subscription(int id) {
 		this.id = id;
+		monitoredItems = new HashMap<Integer, MonitoredItem>();
 	}
 
 	/**
@@ -156,4 +163,9 @@ zero.
 	public void setPriority(int priority) {
 		this.priority = priority;
 	}
+	
+	public void addMonitoredItem(MonitoredItem item){
+		
+	}
+	
 }
