@@ -1,6 +1,10 @@
 package bpi.most.opcua.server.handler;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
+import org.opcfoundation.ua.builtintypes.StatusCode;
+import org.opcfoundation.ua.builtintypes.UnsignedInteger;
 import org.opcfoundation.ua.common.ServiceFaultException;
 import org.opcfoundation.ua.core.CreateMonitoredItemsRequest;
 import org.opcfoundation.ua.core.CreateMonitoredItemsResponse;
@@ -8,6 +12,7 @@ import org.opcfoundation.ua.core.DeleteMonitoredItemsRequest;
 import org.opcfoundation.ua.core.DeleteMonitoredItemsResponse;
 import org.opcfoundation.ua.core.ModifyMonitoredItemsRequest;
 import org.opcfoundation.ua.core.ModifyMonitoredItemsResponse;
+import org.opcfoundation.ua.core.MonitoredItemCreateResult;
 import org.opcfoundation.ua.core.MonitoredItemServiceSetHandler;
 import org.opcfoundation.ua.core.SetMonitoringModeRequest;
 import org.opcfoundation.ua.core.SetMonitoringModeResponse;
@@ -15,6 +20,8 @@ import org.opcfoundation.ua.core.SetTriggeringRequest;
 import org.opcfoundation.ua.core.SetTriggeringResponse;
 import org.opcfoundation.ua.core.StatusCodes;
 import org.opcfoundation.ua.transport.EndpointServiceRequest;
+
+import bpi.most.opcua.server.core.subscription.MonitoredItem;
 
 public class MonitoredItemServiceHandler extends ServiceHandlerBase implements MonitoredItemServiceSetHandler {
 
@@ -30,9 +37,19 @@ public class MonitoredItemServiceHandler extends ServiceHandlerBase implements M
 		CreateMonitoredItemsRequest req = serviceReq.getRequest();
 		CreateMonitoredItemsResponse resp = new CreateMonitoredItemsResponse();
 		
+		List<MonitoredItem> items = getSubscriptionManager().createMonitoredItems(req);
+		
 		LOG.info("request: " + req.toString());
 		
-		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
+		MonitoredItemCreateResult[] results = new MonitoredItemCreateResult[items.size()];
+		int i = 0;
+		for (MonitoredItem item: items){
+			MonitoredItemCreateResult result = new MonitoredItemCreateResult(StatusCode.GOOD, new UnsignedInteger(item.getId()), item.getSamplingInterval(), item.getQueueSize(), null);
+			results[i++] = result;
+		}
+		resp.setResults(results);
+		
+		resp.setResponseHeader(buildRespHeader(req));
 		sendResp(serviceReq, resp);
 	}
 

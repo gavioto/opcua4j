@@ -1,7 +1,6 @@
 package bpi.most.opcua.server.handler;
 
 import org.apache.log4j.Logger;
-import org.opcfoundation.ua.builtintypes.StatusCode;
 import org.opcfoundation.ua.builtintypes.UnsignedInteger;
 import org.opcfoundation.ua.common.ServiceFaultException;
 import org.opcfoundation.ua.core.CreateSubscriptionRequest;
@@ -54,19 +53,35 @@ public class SubscriptionServiceHandler extends ServiceHandlerBase implements Su
 
 	@Override
 	public void onModifySubscription(EndpointServiceRequest<ModifySubscriptionRequest, ModifySubscriptionResponse> serviceReq) throws ServiceFaultException {
+		
+		LOG.info("onModifySubscription");
+		
 		initRequestContext(serviceReq);
 		ModifySubscriptionRequest req = serviceReq.getRequest();
 		ModifySubscriptionResponse resp = new ModifySubscriptionResponse();
 		
-		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
+		LOG.info("request: " + req.toString());
+		
+		Subscription subscription = getSubscriptionManager().modifySubscription(req);
+		
+		resp.setRevisedLifetimeCount(new UnsignedInteger(subscription.getLifetimeCount()));
+		resp.setRevisedMaxKeepAliveCount(new UnsignedInteger(subscription.getMaxKeepAliveCount()));
+		resp.setRevisedPublishingInterval(subscription.getPublishingInterval());
+		
+		resp.setResponseHeader(buildRespHeader(req));
 		sendResp(serviceReq, resp);
 	}
 
 	@Override
 	public void onSetPublishingMode(EndpointServiceRequest<SetPublishingModeRequest, SetPublishingModeResponse> serviceReq) throws ServiceFaultException {
+		
+		LOG.info("onSetPublishingMode");
+		
 		initRequestContext(serviceReq);
 		SetPublishingModeRequest req = serviceReq.getRequest();
 		SetPublishingModeResponse resp = new SetPublishingModeResponse();
+		
+		LOG.info("request: " + req.toString());
 		
 		getSubscriptionManager().setPublishingMode(req);
 		
@@ -76,19 +91,28 @@ public class SubscriptionServiceHandler extends ServiceHandlerBase implements Su
 
 	@Override
 	public void onPublish(EndpointServiceRequest<PublishRequest, PublishResponse> serviceReq) throws ServiceFaultException {
-		initRequestContext(serviceReq);
-		PublishRequest req = serviceReq.getRequest();
-		PublishResponse resp = new PublishResponse();
 		
-		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
-		sendResp(serviceReq, resp);
+		LOG.info("onPublish");
+		LOG.info("request: " + serviceReq.getRequest().toString());
+		
+		initRequestContext(serviceReq);
+		
+		getSubscriptionManager().onPublish(serviceReq);
+		
+//		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
+//		sendResp(serviceReq, resp);
 	}
 
 	@Override
 	public void onRepublish(EndpointServiceRequest<RepublishRequest, RepublishResponse> serviceReq) throws ServiceFaultException {
+		
+		LOG.info("onRepublish");
+		
 		initRequestContext(serviceReq);
 		RepublishRequest req = serviceReq.getRequest();
 		RepublishResponse resp = new RepublishResponse();
+		
+		LOG.info("request: " + req.toString());
 		
 		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
 		sendResp(serviceReq, resp);
@@ -96,9 +120,14 @@ public class SubscriptionServiceHandler extends ServiceHandlerBase implements Su
 
 	@Override
 	public void onTransferSubscriptions(EndpointServiceRequest<TransferSubscriptionsRequest, TransferSubscriptionsResponse> serviceReq) throws ServiceFaultException {
+		
+		LOG.info("onTransferSubscriptions");
+		
 		initRequestContext(serviceReq);
 		TransferSubscriptionsRequest req = serviceReq.getRequest();
 		TransferSubscriptionsResponse resp = new TransferSubscriptionsResponse();
+		
+		LOG.info("request: " + req.toString());
 		
 		resp.setResponseHeader(buildErrRespHeader(req, StatusCodes.Bad_ServiceUnsupported));
 		sendResp(serviceReq, resp);
@@ -106,9 +135,14 @@ public class SubscriptionServiceHandler extends ServiceHandlerBase implements Su
 
 	@Override
 	public void onDeleteSubscriptions(EndpointServiceRequest<DeleteSubscriptionsRequest, DeleteSubscriptionsResponse> serviceReq) throws ServiceFaultException {
+		
+		LOG.info("onDeleteSubscriptions");
+		
 		initRequestContext(serviceReq);
 		DeleteSubscriptionsRequest req = serviceReq.getRequest();
 		DeleteSubscriptionsResponse resp = new DeleteSubscriptionsResponse();
+		
+		LOG.info("request: " + req.toString());
 		
 		getSubscriptionManager().deleteSubscription(req);
 		
