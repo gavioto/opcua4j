@@ -21,6 +21,7 @@ import org.opcfoundation.ua.core.TransferSubscriptionsRequest;
 import org.opcfoundation.ua.core.TransferSubscriptionsResponse;
 import org.opcfoundation.ua.transport.EndpointServiceRequest;
 
+import bpi.most.opcua.server.core.SessionManager;
 import bpi.most.opcua.server.core.subscription.Subscription;
 
 public class SubscriptionServiceHandler extends ServiceHandlerBase implements SubscriptionServiceSetHandler {
@@ -40,7 +41,7 @@ public class SubscriptionServiceHandler extends ServiceHandlerBase implements Su
 		LOG.info("request: " + req.toString());
 		resp.setResponseHeader(buildRespHeader(req));
 		
-		Subscription subscription = getSubscriptionManager().createSubscription(req);
+		Subscription subscription = getSubscriptionManager().createSubscription(req, getSession(req).getSessionID());
 		
 		resp.setSubscriptionId(new UnsignedInteger(subscription.getId()));
 		resp.setRevisedLifetimeCount(new UnsignedInteger(subscription.getLifetimeCount()));

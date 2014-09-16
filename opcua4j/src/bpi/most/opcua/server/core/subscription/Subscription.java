@@ -3,10 +3,14 @@ package bpi.most.opcua.server.core.subscription;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.opcfoundation.ua.builtintypes.NodeId;
+
 
 public class Subscription {
 
 	private int id;
+	
+	private NodeId sessionId;
 	
 	/**
 	 * cyclic rate in milliseconds that the Subscription returns Notifications to the Client
@@ -57,12 +61,15 @@ zero.
 	
 	private Map<Integer, MonitoredItem> monitoredItems;
 	
+	private Publisher publisher;
+	
 	
 	/**
 	 * @param id
 	 */
-	public Subscription(int id) {
+	public Subscription(int id, NodeId sessionId) {
 		this.id = id;
+		this.sessionId = sessionId;
 		monitoredItems = new HashMap<Integer, MonitoredItem>();
 	}
 
@@ -164,8 +171,54 @@ zero.
 		this.priority = priority;
 	}
 	
+	/**
+	 * @return the sessionId
+	 */
+	public NodeId getSessionId() {
+		return sessionId;
+	}
+
+	/**
+	 * @param sessionId the sessionId to set
+	 */
+	public void setSessionId(NodeId sessionId) {
+		this.sessionId = sessionId;
+	}
+
 	public void addMonitoredItem(MonitoredItem item){
-		
+		monitoredItems.put(item.getId(), item);
+	}
+	
+	public MonitoredItem getMonitoredItem(int id){
+		return monitoredItems.get(id);
+	}
+
+	/**
+	 * @return the monitoredItems
+	 */
+	public Map<Integer, MonitoredItem> getMonitoredItems() {
+		return monitoredItems;
+	}
+
+	/**
+	 * @param monitoredItems the monitoredItems to set
+	 */
+	public void setMonitoredItems(Map<Integer, MonitoredItem> monitoredItems) {
+		this.monitoredItems = monitoredItems;
+	}
+
+	/**
+	 * @return the publisher
+	 */
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	/**
+	 * @param publisher the publisher to set
+	 */
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
 	}
 	
 }

@@ -24,17 +24,17 @@ public class ServiceHandlerBase {
 
 	protected UAServer server;
 
-	protected DiagnosticInfo buildDiagnostics() {
+	public static DiagnosticInfo buildDiagnostics() {
 		return null;
 	}
 
-	protected void validateHeader(RequestHeader reqHeader) {
+	public static void validateHeader(RequestHeader reqHeader) {
 		// TODO do header validation here
 
 		// TODO validate authtoken if it matches the session
 	}
 
-	protected ResponseHeader buildRespHeader(ServiceRequest req) {
+	public static ResponseHeader buildRespHeader(ServiceRequest req) {
 		// TODO common validation
 
 		// TODO logging
@@ -59,7 +59,7 @@ public class ServiceHandlerBase {
 	 * @param req
 	 * @return
 	 */
-	protected ResponseHeader buildErrRespHeader(ServiceRequest req, UnsignedInteger errCode) {
+	public static ResponseHeader buildErrRespHeader(ServiceRequest req, UnsignedInteger errCode) {
 		ResponseHeader respHeader = new ResponseHeader();
 		respHeader.setTimestamp(new DateTime());
 		// requesthandle is always the one the client sent in its request
