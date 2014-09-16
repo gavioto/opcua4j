@@ -65,8 +65,4 @@ public class RequestContext {
 	public static RequestContext get() {
 		return CONTEXT.get();
 	}
-
-	public static void reset() {
-		CONTEXT.remove();
-	}
 }

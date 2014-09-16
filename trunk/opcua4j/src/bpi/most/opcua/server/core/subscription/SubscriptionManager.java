@@ -16,11 +16,24 @@ import org.opcfoundation.ua.core.MonitoredItemCreateRequest;
 import org.opcfoundation.ua.core.PublishRequest;
 import org.opcfoundation.ua.core.PublishResponse;
 import org.opcfoundation.ua.core.SetPublishingModeRequest;
-import org.opcfoundation.ua.core.SubscriptionAcknowledgement;
 import org.opcfoundation.ua.transport.EndpointServiceRequest;
 
 import bpi.most.opcua.server.core.RequestContext;
 
+
+/**
+ * 
+ * 
+ * 
+ * 
+ * +---------+         +--------------+         +-----------------+
+ * | Session | 1-----n | Subscription | 1-----n | Monitored Items | 
+ * +---------+         +--------------+         +-----------------+ 
+ * 
+ * 
+ * @author harald
+ *
+ */
 public class SubscriptionManager {
 
 	private static final Logger LOG = Logger.getLogger(SubscriptionManager.class);
@@ -72,8 +85,8 @@ public class SubscriptionManager {
 	 * 
 	 * @return
 	 */
-	public synchronized Subscription createSubscription(CreateSubscriptionRequest req) {
-		Subscription subscription = new Subscription(subscriptionIndex++);
+	public synchronized Subscription createSubscription(CreateSubscriptionRequest req, NodeId sessionId) {
+		Subscription subscription = new Subscription(subscriptionIndex++, sessionId);
 
 		// TODO validate all requested values
 		subscription.setLifetimeCount(req.getRequestedLifetimeCount().intValue());
@@ -82,8 +95,10 @@ public class SubscriptionManager {
 		subscription.setPriority(req.getPriority().intValue());
 		subscription.setPublishingEnabled(req.getPublishingEnabled());
 		subscription.setPublishingInterval(req.getRequestedPublishingInterval());
-
 		subscriptions.put(subscription.getId(), subscription);
+			
+		subscription.setPublisher(new Publisher(subscription, publishRequests));
+		
 		return subscription;
 	}
 
@@ -101,6 +116,7 @@ public class SubscriptionManager {
 		subscription.setPriority(req.getPriority().intValue());
 		subscription.setPublishingInterval(req.getRequestedPublishingInterval());
 
+		subscription.getPublisher().configure();
 		// TODO modify timers
 
 		return subscription;
@@ -129,7 +145,8 @@ public class SubscriptionManager {
 	public synchronized void deleteSubscription(DeleteSubscriptionsRequest req) {
 		for (UnsignedInteger id : req.getSubscriptionIds()) {
 			if (subscriptions.containsKey(id)) {
-				subscriptions.remove(id);
+				Subscription subscription = subscriptions.remove(id);
+				subscription.getPublisher().stopPublishing();
 			} else {
 				LOG.debug("clients wants to remove subscription with id " + id + ", but does not exist");
 			}
@@ -147,22 +164,13 @@ public class SubscriptionManager {
 		//TODO clear client-timeout timer
 
 		// ad 2.
-		PublishRequest req = serviceReq.getRequest();
-		clearAcknowledgedNotifications(req.getSubscriptionAcknowledgements());
+		//is done when the respond is published
 
 		// ad 3.
 		NodeId sessionID = RequestContext.get().getSession().getSessionID();
 		publishRequests.offer(sessionID, serviceReq);
 	}
 
-	private void clearAcknowledgedNotifications(SubscriptionAcknowledgement[] acks) {
-		if (acks != null) {
-			for (SubscriptionAcknowledgement ack : acks) {
-				// TODO clear acknowledged Notification
-			}
-		}
-	}
-	
 	public synchronized List<MonitoredItem> createMonitoredItems(CreateMonitoredItemsRequest req){
 		List<MonitoredItem> createdItems = new ArrayList<MonitoredItem>();
 		Subscription subscription = getSubscription(req.getSubscriptionId().intValue());
@@ -186,22 +194,10 @@ public class SubscriptionManager {
 				item.setDiscardOldest(itemReq.getRequestedParameters().getDiscardOldest());
 				
 				createdItems.add(item);
+				subscription.addMonitoredItem(item);
 			}
 		}
 		
 		return createdItems;
-	}
-
-	private void bla() {
-		// thats it
-		EndpointServiceRequest<PublishRequest, PublishResponse> serviceReq = getReq();
-
-		PublishRequest req = serviceReq.getRequest();
-		PublishResponse resp = new PublishResponse();
-		serviceReq.sendResponse(resp);
-	}
-
-	private EndpointServiceRequest<PublishRequest, PublishResponse> getReq() {
-		return null;
 	}
 }

@@ -14,6 +14,9 @@ import org.opcfoundation.ua.transport.EndpointServiceRequest;
  * holds publishRequests per session. PublishRequests can be used for any Subscription in the same context, therefore
  * they are collected by session and taken one after an other.
  * 
+ * Several Publisher (from different Subscriptions) concur for PublishRequests to send their notifications to the client. Here
+ * we have to enforce priority which Subscription is allowed to send first. This is not implemented now.
+ * 
  * @author harald
  *
  */
@@ -41,10 +44,10 @@ public class PublishReqCollection {
 		queue.offer(req);
 	}
 	
-	public synchronized EndpointServiceRequest<PublishRequest, PublishResponse> poll(NodeId sessionId){
+	public EndpointServiceRequest<PublishRequest, PublishResponse> take(NodeId sessionId) throws InterruptedException{
 		BlockingQueue<EndpointServiceRequest<PublishRequest, PublishResponse>> queue = publishRequestsBySession.get(sessionId);
 		if (queue != null){
-			return queue.poll();
+			return queue.take();
 		}
 		return null;
 	}
